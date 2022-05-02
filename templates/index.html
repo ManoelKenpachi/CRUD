@@ -1,0 +1,84 @@
+<!doctype html>
+<head>
+<title>CRUD</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<link rel=stylesheet type=text/css href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel=stylesheet type=text/css href="https://cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.css">
+<link rel=stylesheet type=text/css href="https://cdn.datatables.net/responsive/1.0.4/css/dataTables.responsive.css">
+</head>
+<body>
+
+<div class=page>
+ <!-- <h1>Python</h1> -->
+  {% for table in tables %}
+    <h2>{{titles[loop.index]}}</h2>
+    {{ table|safe }}
+  {% endfor %}
+</div>
+
+<form action="/insert" method="post">
+  <label>i</label> <input type="text" name="num1"></input>
+  <label>c</label> <input type="text" name="num2"></input>
+  <label>d</label> <input type="text" name="num3"></input>
+  <label>h</label> <input type="text" name="num4"></input>
+  <label>t</label> <input type="text" name="num5"></input>
+  <label>s</label> <input type="text" name="num6"></input>
+  <label>qtd</label> <input type="text" name="num7"></input>
+  <label>e</label> <input type="text" name="num8"></input>
+  <input type="submit" value="Criar"></input>
+</form>
+
+<form action="/delete" method="post">
+  <label>i</label> <input type="text" name="num1"></input>
+  <input type="submit" value="Delete"></input>
+</form>
+
+<form action="/save/data.csv" method="get"></form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"> </script>
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"> </script>
+<script src="https://cdn.rawgit.com/ejbeaty/CellEdit/master/js/dataTables.cellEdit.js"> </script>
+
+<script>
+
+$(document).ready(function() {
+  var table = $('#example').DataTable();
+  table.MakeCellsEditable({
+    "onUpdate": myCallbackFunction
+
+  });
+
+  function myCallbackFunction(updatedCell, updatedRow, oldValue) {
+    console.log(updatedCell.data());
+    console.log(oldValue);
+    console.log(updatedRow.data());
+    updatedCell.data();
+    updatedRow.data();
+    table.draw();
+  }
+});
+</script>
+
+<script>
+$("#sa").click(function(e) {
+    e.preventDefault();
+    $.ajax({
+        type: "GET",
+        url: "/save/data.csv",
+        success: function(result) {
+            console.log('ok')
+        },
+        error: function(result) {
+          console.log('error')
+        }
+    });
+});
+  </script>
+
+</body>
+</html>
+
+  
+   
+   
+  
