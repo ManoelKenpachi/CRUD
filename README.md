@@ -1,9 +1,9 @@
 # crud
  
-Após clonar a aplicação, é necessário baixar as dependências.
+Após clonar a aplicação, é necessário baixar as dependências. [Caso ache necessário já há um ambiente virtual venv]
 pip install -r requirements.txt
 
-Basta rodar a aplicação:
+Resta rodar a aplicação:
 python app.py
 
 A aplicação vai retorna no IP: http://localhost:5000/
