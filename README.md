@@ -21,3 +21,5 @@ O gráfico ficou em um serviço a parte:
 python dashboard.py
 
 Seu endpoint: http://localhost:8050
+
+![image](https://user-images.githubusercontent.com/102999346/166215496-afa697ef-aa59-4bf8-bec5-05d8538c6f86.png)
